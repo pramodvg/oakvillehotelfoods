@@ -28,6 +28,33 @@
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
     <script src="js/firebase-config.js"></script>
     <script src="js/display.js"></script>
+
+    <!-- CSS Hot Reloader (checks for style changes without full page refresh) -->
+    <script>
+        let currentCss = "";
+        fetch('css/style.css?' + Date.now())
+            .then(res => res.text())
+            .then(text => currentCss = text);
+
+        setInterval(() => {
+            fetch('css/style.css?' + Date.now())
+                .then(res => res.text())
+                .then(newCss => {
+                    if (currentCss && newCss && currentCss !== newCss) {
+                        currentCss = newCss;
+                        const newLink = document.createElement("link");
+                        newLink.rel = "stylesheet";
+                        newLink.href = "css/style.css?v=" + Date.now();
+                        document.head.appendChild(newLink);
+
+                        setTimeout(() => {
+                            const oldLinks = document.querySelectorAll('link[href^="css/style.css"]');
+                            if (oldLinks.length > 1) oldLinks[0].remove();
+                        }, 500);
+                    }
+                });
+        }, 60000); // Polls GitHub every 60 seconds
+    </script>
 </body>
 
 </html>
