@@ -3,19 +3,23 @@
 (function () {
     const ordersRef = database.ref('orders');
     const grid = document.getElementById('orderGrid');
+    const header = document.querySelector('.display-header');
 
     ordersRef.orderByChild('timestamp').on('value', (snapshot) => {
         grid.innerHTML = '';
 
         if (!snapshot.exists()) {
-            grid.innerHTML = `
-        <div class="empty-state" style="grid-column: 1 / -1;">
-          <div class="empty-state-icon">🍽️</div>
-          <p>No orders ready yet</p>
-        </div>
-      `;
+            // Activate screensaver
+            header.style.display = 'none';
+            grid.style.display = 'none';
+            document.body.classList.add('screensaver-active');
             return;
         }
+
+        // Deactivate screensaver
+        header.style.display = 'block';
+        grid.style.display = 'grid';
+        document.body.classList.remove('screensaver-active');
 
         const orders = [];
         snapshot.forEach((child) => {

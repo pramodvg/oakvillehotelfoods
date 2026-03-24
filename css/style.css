@@ -528,3 +528,10 @@ body {
     font-size: 1.5rem;
   }
 }
+
+/* ============================================
+   SCREENSAVER (Empty State)
+   ============================================ */
+body.screensaver-active {
+  background: url('../img/menu-bg.png') center/cover no-repeat #0f172a !important;
+}
