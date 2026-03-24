@@ -533,5 +533,5 @@ body {
    SCREENSAVER (Empty State)
    ============================================ */
 body.screensaver-active {
-  background: url('../img/menu-bg.png') center/cover no-repeat #0f172a !important;
+  background: url('../img/menu-bg.png') center/contain no-repeat #0f172a !important;
 }
