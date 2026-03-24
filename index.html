@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ready for Pickup — Oakville Hotel Foods</title>
+    <meta name="description"
+        content="Oakville Hotel Foods — order pickup display showing orders ready for customer pickup.">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="display-page">
+
+    <header class="display-header">
+        <h1>Ready for Pickup</h1>
+    </header>
+
+    <main id="orderGrid" class="order-grid">
+        <div class="empty-state" style="grid-column: 1 / -1;">
+            <div class="empty-state-icon">🍽️</div>
+            <p>No orders ready yet</p>
+        </div>
+    </main>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/display.js"></script>
+</body>
+
+</html>
